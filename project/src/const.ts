@@ -1,6 +1,10 @@
-export const PHONE = {
+export const CONTACTS = {
+  address: 'Санкт-Петербург, Набережная реки Карповка, д 5П',
+  mode: 'Ежедневно, c 10:00 до 22:00',
   phone: '8 (000) 111-11-11',
-  phoneLink: 'tel:88003335599',
+  phoneHref: 'tel:88003335599',
+  mail: 'info@escape-room.ru',
+  mailHref: 'mailto:info@escape-room.ru'
 };
 
 export const NAV_PAGES = [

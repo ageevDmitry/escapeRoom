@@ -1,6 +1,6 @@
 import Logo from '../logo/logo';
 import SingIn from '../sing-in/sing-in';
-import {PHONE, NAV_PAGES} from '../../const';
+import {CONTACTS, NAV_PAGES} from '../../const';
 // import SingOut from '../sing-out/sing-out';
 
 function Header (): JSX.Element {
@@ -20,7 +20,7 @@ function Header (): JSX.Element {
         </nav>
         <div className="header__side-nav">
           <SingIn/>
-          <a className="link header__side-item header__phone-link" href={PHONE.phoneLink}>{PHONE.phone}</a>
+          <a className="link header__side-item header__phone-link" href={CONTACTS.phoneHref}>{CONTACTS.phone}</a>
         </div>
       </div>
     </header>
