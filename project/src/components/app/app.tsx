@@ -1,7 +1,8 @@
-import Main from '../../pages/main/main';
+// import Main from '../../pages/main/main';
+import Quest from '../../pages/quest/quest';
 
 function App(): JSX.Element {
-  return <Main/>;
+  return <Quest/>;
 }
 
 export default App;

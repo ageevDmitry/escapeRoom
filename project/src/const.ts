@@ -1,5 +1,5 @@
 export const PHONE = {
-  phone: '88003335599',
+  phone: '8 (000) 111-11-11',
   phoneLink: 'tel:88003335599',
 };
 
