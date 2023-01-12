@@ -3,6 +3,8 @@ import FilterGenres from '../../components/filter-genres/filter-genres';
 import FilterDifficultyLevels from '../../components/filter-difficulty-level/filter-difficulty-level';
 import QuestCard from '../../components/quest-card/quest-card';
 import Footer from '../../components/footer/footer';
+// import Loading from '../../components/loading/loading';
+import ContentEmpty from '../../components/content-empty/content-empty';
 
 function Main (): JSX.Element {
 
@@ -24,6 +26,7 @@ function Main (): JSX.Element {
           </div>
           <h2 className="title visually-hidden">Выберите квест</h2>
           <div className="cards-grid">
+            <ContentEmpty/>
             <QuestCard/>
           </div>
         </div>
