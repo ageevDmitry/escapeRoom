@@ -2,10 +2,11 @@
 // import Quest from '../../pages/quest/quest';
 // import Contacts from '../../pages/contacts/contacts';
 // import Login from '../../pages/login/login';
-import Booking from '../../pages/booking/booking';
+// import Booking from '../../pages/booking/booking';
+import MyQuests from '../../pages/my-quests/my-quests';
 
 function App(): JSX.Element {
-  return <Booking/>;
+  return <MyQuests/>;
 }
 
 export default App;
