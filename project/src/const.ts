@@ -86,3 +86,19 @@ export const SOCIAL_LINKS = [
     href: 'https://vk.com/'
   },
 ];
+
+export enum AppRoute {
+  Main = '/',
+  Quest = '/quest:id',
+  Contacts = '/contacts',
+  Login = '/login',
+  Booking = '/booking',
+  MyQuests = '/my-quests',
+  NotFound = '/404',
+}
+
+export enum AuthorizationStatus {
+  Auth = 'AUTH',
+  NoAuth = 'NO_AUTH',
+  Unknown = 'UNKNOWN',
+}
