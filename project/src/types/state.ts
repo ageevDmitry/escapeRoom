@@ -1,10 +1,8 @@
-import {Offer} from '../types/offer';
+import {Quest} from './quests';
 import {store} from '../store';
 
-export type OffersData = {
-    offers: Offer[];
-    propertyOffer?: Offer;
-    selectedOffer?: Offer;
+export type QuestsData = {
+    quests: Quest[];
     isDataLoading: boolean;
     isSuccess: boolean;
 };

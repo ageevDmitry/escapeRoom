@@ -1,17 +1,17 @@
 import {AxiosInstance} from 'axios';
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {AppDispatch, State} from '../types/state.js';
-import {Offer} from '../types/offer';
+import {Quest} from '../types/quests';
 import {APIRoute} from '../const';
 
-export const fetchOffersAction = createAsyncThunk<Offer[], undefined, {
+export const fetchQuestsAction = createAsyncThunk<Quest[], undefined, {
     dispatch: AppDispatch;
     state: State;
     extra: AxiosInstance;
   }>(
-    'data/fetchOffers',
+    'data/fetchQuests',
     async (_arg, {extra: api}) => {
-      const {data} = await api.get<Offer[]>(APIRoute.Offers);
+      const {data} = await api.get<Quest[]>(APIRoute.Quests);
       return data;
     },
   );

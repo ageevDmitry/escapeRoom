@@ -104,19 +104,11 @@ export enum AuthorizationStatus {
 }
 
 export enum APIRoute {
-  Offers = '/hotels',
-  Comments = '/comments',
-}
-
-export enum OfferType {
-  Apartment = 'apartment',
-  Room = 'room',
-  House = 'house',
-  Hotel = 'hotel'
+  Quests = 'escape-room/quest',
 }
 
 export enum NameSpace {
-  OffersData = 'OFFERS-DATA',
-  OffersUI = 'OFFERS-UI',
+  QuestsData = 'QUESTS-DATA',
+  QuestsUI = 'QUESTS-UI',
   DataError = 'DATA-ERROR',
 }
