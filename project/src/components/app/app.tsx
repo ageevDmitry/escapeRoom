@@ -3,10 +3,11 @@
 // import Contacts from '../../pages/contacts/contacts';
 // import Login from '../../pages/login/login';
 // import Booking from '../../pages/booking/booking';
-import MyQuests from '../../pages/my-quests/my-quests';
+// import MyQuests from '../../pages/my-quests/my-quests';
+import NotFoundScreen from '../../pages/notFoundScreen/notFoundScreen';
 
 function App(): JSX.Element {
-  return <MyQuests/>;
+  return <NotFoundScreen/>;
 }
 
 export default App;
