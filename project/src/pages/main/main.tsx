@@ -5,8 +5,12 @@ import QuestCard from '../../components/quest-card/quest-card';
 import Footer from '../../components/footer/footer';
 // import Loading from '../../components/loading/loading';
 // import ContentEmpty from '../../components/content-empty/content-empty';
+import {useAppSelector} from '../../hooks';
+import {getQuests} from '../../store/quests-data/selectors';
 
 function Main (): JSX.Element {
+
+  const quests = useAppSelector(getQuests);
 
   return (
     <div className="wrapper">
@@ -26,7 +30,14 @@ function Main (): JSX.Element {
           </div>
           <h2 className="title visually-hidden">Выберите квест</h2>
           <div className="cards-grid">
-            <QuestCard/>
+            {
+              quests
+                .map((quest) => (
+                  <QuestCard
+                    key = {quest.id}
+                    quest = {quest}
+                  />))
+            }
           </div>
         </div>
       </main>

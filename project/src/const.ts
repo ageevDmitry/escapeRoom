@@ -112,3 +112,15 @@ export enum NameSpace {
   QuestsUI = 'QUESTS-UI',
   DataError = 'DATA-ERROR',
 }
+
+export enum QuestLevel {
+  Easy = 'easy',
+  Medium = 'medium',
+  Hard = 'hard',
+}
+
+export const VIEW_QUEST_LEVEL = {
+  [QuestLevel.Easy]: 'легкий',
+  [QuestLevel.Medium]: 'средний',
+  [QuestLevel.Hard]: 'сложный',
+} as const;

@@ -1,4 +1,4 @@
-import {Quest} from './quests';
+import {Quest} from './quest';
 import {store} from '../store';
 
 export type QuestsData = {

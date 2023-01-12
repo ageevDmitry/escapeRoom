@@ -1,6 +1,6 @@
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
-import QuestCard from '../../components/quest-card/quest-card';
+// import QuestCard from '../../components/quest-card/quest-card';
 
 function MyQuests (): JSX.Element {
 
@@ -18,7 +18,7 @@ function MyQuests (): JSX.Element {
             <h1 className="title title--size-m page-content__title">Мои бронирования</h1>
           </div>
           <div className="cards-grid">
-            <QuestCard/>
+            {/* <QuestCard/> */}
           </div>
         </div>
       </main>
