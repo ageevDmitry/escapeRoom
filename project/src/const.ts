@@ -102,3 +102,21 @@ export enum AuthorizationStatus {
   NoAuth = 'NO_AUTH',
   Unknown = 'UNKNOWN',
 }
+
+export enum APIRoute {
+  Offers = '/hotels',
+  Comments = '/comments',
+}
+
+export enum OfferType {
+  Apartment = 'apartment',
+  Room = 'room',
+  House = 'house',
+  Hotel = 'hotel'
+}
+
+export enum NameSpace {
+  OffersData = 'OFFERS-DATA',
+  OffersUI = 'OFFERS-UI',
+  DataError = 'DATA-ERROR',
+}
