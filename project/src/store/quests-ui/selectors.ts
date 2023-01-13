@@ -9,10 +9,13 @@ export const getFilterType = (state: State): string => state[NameSpace.QuestsUI]
 export const getFilterQuests = createSelector(
   [getQuests, getFilterType],
   (quests: Quest[], filterType: string) => {
-    if (filterType === 'all') {
-      return quests;
+
+    let filteredQuests = quests.slice();
+
+    if (filterType !== 'all') {
+      filteredQuests = quests.filter((item: Quest) => item.type === filterType).slice();
     }
 
-    return quests.filter((item: Quest) => item.type === filterType);
+    return filteredQuests;
   }
 );
