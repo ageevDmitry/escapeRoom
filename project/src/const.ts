@@ -55,7 +55,7 @@ export const GENRES = [
   },
 ];
 
-export const DIFFICULTY_LEVELS = [
+export const LEVELS = [
   {
     title: 'Любой',
     type: 'any',
@@ -66,7 +66,7 @@ export const DIFFICULTY_LEVELS = [
   },
   {
     title: 'Средний',
-    type: 'middle',
+    type: 'medium',
   },
   {
     title: 'Сложный',

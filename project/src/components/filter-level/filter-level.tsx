@@ -1,7 +1,7 @@
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {changeFilterLevelType} from '../../store/quests-ui/quests-ui';
 import {getFilterLevelType} from '../../store/quests-ui/selectors';
-import {DIFFICULTY_LEVELS} from '../../const';
+import {LEVELS} from '../../const';
 
 function FilterDifficultyLevels (): JSX.Element {
 
@@ -12,7 +12,7 @@ function FilterDifficultyLevels (): JSX.Element {
     <fieldset className="filter__section">
       <legend className="visually-hidden">Сложность</legend>
       <ul className="filter__list">
-        {DIFFICULTY_LEVELS.map((item) => (
+        {LEVELS.map((item) => (
           <li key = {item.type} className="filter__item"
             onClick={() => {
               dispatch(changeFilterLevelType({type: item.type}));

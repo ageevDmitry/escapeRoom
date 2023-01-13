@@ -1,6 +1,6 @@
 import Header from '../../components/header/header';
-import FilterGenres from '../../components/filter-genres/filter-genres';
-import FilterDifficultyLevels from '../../components/filter-difficulty-level/filter-difficulty-level';
+import FilterGenres from '../../components/filter-genre/filter-genre';
+import FilterDifficultyLevels from '../../components/filter-level/filter-level';
 import QuestCard from '../../components/quest-card/quest-card';
 import Footer from '../../components/footer/footer';
 // import Loading from '../../components/loading/loading';
