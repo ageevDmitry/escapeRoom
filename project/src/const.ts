@@ -89,7 +89,7 @@ export const SOCIAL_LINKS = [
 
 export enum AppRoute {
   Main = '/',
-  Quest = '/quest:id',
+  Quest = '/quest/:id',
   Contacts = '/contacts',
   Login = '/login',
   Booking = '/booking',

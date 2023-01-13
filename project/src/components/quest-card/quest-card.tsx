@@ -1,5 +1,6 @@
 import {Quest} from '../../types/quest';
 import {VIEW_QUEST_LEVEL} from '../../const';
+import {Link} from 'react-router-dom';
 
 type QuestCardProps = {
   typeComponent?: boolean;
@@ -9,10 +10,11 @@ type QuestCardProps = {
 
 function QuestCard ({quest, typeComponent}:QuestCardProps): JSX.Element {
 
-  const {title, previewImg, previewImgWebp, level, peopleMinMax} = quest;
+  const {id, title, previewImg, previewImgWebp, level, peopleMinMax} = quest;
+  const questCardId = `/quest/:${id}`;
 
   return (
-    <div className="quest-card">
+    <Link to={questCardId} className="quest-card">
       <div className="quest-card__img">
         <picture>
           <source type="image/webp" srcSet={previewImgWebp}/><img src={previewImg} alt="/" width={344} height={232} />
@@ -36,7 +38,7 @@ function QuestCard ({quest, typeComponent}:QuestCardProps): JSX.Element {
         </ul>
         {typeComponent && <button className="btn btn--accent btn--secondary quest-card__btn" type="button">Отменить</button>}
       </div>
-    </div>
+    </Link>
   );
 }
 
