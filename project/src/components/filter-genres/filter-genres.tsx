@@ -1,12 +1,12 @@
 import {useAppDispatch, useAppSelector} from '../../hooks';
-import {changeFilterType} from '../../store/quests-ui/quests-ui';
-import {getFilterType} from '../../store/quests-ui/selectors';
+import {changeFilterGenreType} from '../../store/quests-ui/quests-ui';
+import {getFilterGenreType} from '../../store/quests-ui/selectors';
 import {GENRES} from '../../const';
 
 function FilterGenres (): JSX.Element {
 
   const dispatch = useAppDispatch();
-  const filterType = useAppSelector(getFilterType);
+  const filterType = useAppSelector(getFilterGenreType);
 
   return (
     <fieldset className="filter__section">
@@ -15,7 +15,7 @@ function FilterGenres (): JSX.Element {
         {GENRES.map((item) => (
           <li key = {item.type} className="filter__item"
             onClick={() => {
-              dispatch(changeFilterType({type: item.type}));
+              dispatch(changeFilterGenreType({type: item.type}));
             }}
           >
             <input type="radio" name="type" id={item.type} checked={filterType === item.type}/>

@@ -3,17 +3,21 @@ import {NameSpace, DEFAULT_FILTERS_TYPE} from '../../const';
 import {QuestsUI} from '../../types/state';
 
 const initialState: QuestsUI = {
-  filterType: DEFAULT_FILTERS_TYPE.GenresType,
+  filterGenreType: DEFAULT_FILTERS_TYPE.GenresType,
+  filterLevelType: DEFAULT_FILTERS_TYPE.DifficultyType
 };
 
 export const questsUI = createSlice({
   name: NameSpace.QuestsUI,
   initialState,
   reducers: {
-    changeFilterType: (state, action) => {
-      state.filterType = action.payload.type;
+    changeFilterGenreType: (state, action) => {
+      state.filterGenreType = action.payload.type;
+    },
+    changeFilterLevelType: (state, action) => {
+      state.filterLevelType = action.payload.type;
     },
   }
 });
 
-export const {changeFilterType} = questsUI.actions;
+export const {changeFilterGenreType, changeFilterLevelType} = questsUI.actions;

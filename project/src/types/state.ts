@@ -8,7 +8,8 @@ export type QuestsData = {
 };
 
 export type QuestsUI = {
-    filterType: string;
+    filterGenreType: string;
+    filterLevelType: string;
 }
 
 export type State = ReturnType<typeof store.getState>;

@@ -4,10 +4,11 @@ import {createSelector} from '@reduxjs/toolkit';
 import {Quest} from '../../types/quest';
 
 const getQuests = (state: State): Quest[] => state[NameSpace.QuestsData].quests;
-export const getFilterType = (state: State): string => state[NameSpace.QuestsUI].filterType;
+export const getFilterGenreType = (state: State): string => state[NameSpace.QuestsUI].filterGenreType;
+export const getFilterLevelType = (state: State): string => state[NameSpace.QuestsUI].filterLevelType;
 
 export const getFilterQuests = createSelector(
-  [getQuests, getFilterType],
+  [getQuests, getFilterGenreType],
   (quests: Quest[], filterType: string) => {
 
     let filteredQuests = quests.slice();
