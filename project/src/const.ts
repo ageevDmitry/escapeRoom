@@ -30,7 +30,7 @@ export const GENRES = [
   },
   {
     title: 'Приключения',
-    type: 'adventure',
+    type: 'adventures',
     svgLink: 'adventure',
   },
   {
@@ -50,7 +50,7 @@ export const GENRES = [
   },
   {
     title: 'Sci-fi',
-    type: 'sciFi',
+    type: 'sci-fi',
     svgLink: 'sci-fi',
   },
 ];

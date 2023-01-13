@@ -7,6 +7,10 @@ export type QuestsData = {
     isSuccess: boolean;
 };
 
+export type QuestsUI = {
+    filterType: string;
+}
+
 export type State = ReturnType<typeof store.getState>;
 
 export type AppDispatch = typeof store.dispatch;

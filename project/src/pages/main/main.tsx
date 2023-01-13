@@ -6,11 +6,11 @@ import Footer from '../../components/footer/footer';
 // import Loading from '../../components/loading/loading';
 // import ContentEmpty from '../../components/content-empty/content-empty';
 import {useAppSelector} from '../../hooks';
-import {getQuests} from '../../store/quests-data/selectors';
+import {getFilterQuests} from '../../store/quests-ui/selectors';
 
 function Main (): JSX.Element {
 
-  const quests = useAppSelector(getQuests);
+  const quests = useAppSelector(getFilterQuests);
 
   return (
     <div className="wrapper">
