@@ -11,7 +11,7 @@ type QuestCardProps = {
 function QuestCard ({quest, typeComponent}:QuestCardProps): JSX.Element {
 
   const {id, title, previewImg, previewImgWebp, level, peopleMinMax} = quest;
-  const questCardId = `/quest/:${id}`;
+  const questCardId = `/quest/${id}`;
 
   return (
     <Link to={questCardId} className="quest-card">

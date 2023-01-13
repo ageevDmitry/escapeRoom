@@ -9,3 +9,16 @@ export type Quest = {
         type: string;
         peopleMinMax: number[];
     }
+
+export type QuestDetail = {
+    id: number;
+        title: string;
+        description: string;
+        previewImg: string;
+        previewImgWebp: string;
+        coverImg: string;
+        coverImgWebp: string;
+        level: QuestLevel;
+        type: string;
+        peopleMinMax: number[];
+}

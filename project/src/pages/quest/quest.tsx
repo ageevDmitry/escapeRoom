@@ -1,7 +1,22 @@
+import {useEffect} from 'react';
+import {useParams} from 'react-router-dom';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
+import {useAppSelector, useAppDispatch} from '../../hooks';
+import {fetchQuestDetailAction} from '../../store/api-action';
+import {getQuestDetail} from '../../store/quests-data/selectors';
 
 function Quest (): JSX.Element {
+
+  const {id} = useParams();
+  const dispatch = useAppDispatch();
+  const questDetail = useAppSelector(getQuestDetail);
+
+  useEffect(() => {
+    if (id) {
+      dispatch(fetchQuestDetailAction(id));
+    }
+  }, [id, questDetail?.id, dispatch]);
 
   return (
     <div className="wrapper">

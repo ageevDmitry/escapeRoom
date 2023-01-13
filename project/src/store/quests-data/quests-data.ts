@@ -2,6 +2,7 @@ import {createSlice} from '@reduxjs/toolkit';
 import {NameSpace} from '../../const';
 import {QuestsData} from '../../types/state';
 import {fetchQuestsAction,
+  fetchQuestDetailAction,
 } from '../api-action';
 
 const initialState: QuestsData = {
@@ -21,6 +22,9 @@ export const questsData = createSlice({
       })
       .addCase(fetchQuestsAction.rejected, (state) => {
         state.quests = [];
+      })
+      .addCase(fetchQuestDetailAction.fulfilled, (state, action) => {
+        state.questDetail = action.payload;
       });
   }
 });
