@@ -130,4 +130,9 @@ export enum QuestCardType {
   MyQuests = 'my-quests',
 }
 
-export const MyQuestCardType = true;
+export const IS_MY_QUESTS_CARD_TYPE = true;
+
+export enum DEFAULT_FILTERS_TYPE {
+  GenresType = 'all',
+  DifficultyType = 'any'
+}

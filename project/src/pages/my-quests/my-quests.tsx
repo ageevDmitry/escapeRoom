@@ -3,7 +3,7 @@ import Footer from '../../components/footer/footer';
 import QuestCard from '../../components/quest-card/quest-card';
 import {useAppSelector} from '../../hooks';
 import {getQuests} from '../../store/quests-data/selectors';
-import {MyQuestCardType} from '../../const';
+import {IS_MY_QUESTS_CARD_TYPE} from '../../const';
 
 function MyQuests (): JSX.Element {
 
@@ -29,7 +29,7 @@ function MyQuests (): JSX.Element {
                   <QuestCard
                     key = {quest.id}
                     quest = {quest}
-                    typeComponent = {MyQuestCardType}
+                    typeComponent = {IS_MY_QUESTS_CARD_TYPE}
                   />))
             }
           </div>
