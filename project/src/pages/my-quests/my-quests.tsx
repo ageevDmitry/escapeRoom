@@ -1,8 +1,13 @@
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
-// import QuestCard from '../../components/quest-card/quest-card';
+import QuestCard from '../../components/quest-card/quest-card';
+import {useAppSelector} from '../../hooks';
+import {getQuests} from '../../store/quests-data/selectors';
+import {MyQuestCardType} from '../../const';
 
 function MyQuests (): JSX.Element {
+
+  const quests = useAppSelector(getQuests);
 
   return (
     <div className="wrapper">
@@ -18,7 +23,15 @@ function MyQuests (): JSX.Element {
             <h1 className="title title--size-m page-content__title">Мои бронирования</h1>
           </div>
           <div className="cards-grid">
-            {/* <QuestCard/> */}
+            {
+              quests
+                .map((quest) => (
+                  <QuestCard
+                    key = {quest.id}
+                    quest = {quest}
+                    typeComponent = {MyQuestCardType}
+                  />))
+            }
           </div>
         </div>
       </main>

@@ -2,12 +2,12 @@ import {Quest} from '../../types/quest';
 import {VIEW_QUEST_LEVEL} from '../../const';
 
 type QuestCardProps = {
-  // typeComponent: string;
+  typeComponent?: boolean;
   quest: Quest;
   // onMouseEnterPlaceCard?: (id: number) => void;
 }
 
-function QuestCard ({quest}:QuestCardProps): JSX.Element {
+function QuestCard ({quest, typeComponent}:QuestCardProps): JSX.Element {
 
   const {title, previewImg, previewImgWebp, level, peopleMinMax} = quest;
 
@@ -20,6 +20,7 @@ function QuestCard ({quest}:QuestCardProps): JSX.Element {
       </div>
       <div className="quest-card__content">
         <div className="quest-card__info-wrapper"><a className="quest-card__link" href="quest.html">{title}</a>
+          {typeComponent && <span className="quest-card__info">[завтра,&nbsp;20:00. наб. реки Карповки&nbsp;5, лит&nbsp;П<br/>м. Петроградская]</span>}
         </div>
         <ul className="tags quest-card__tags">
           <li className="tags__item">
@@ -33,6 +34,7 @@ function QuestCard ({quest}:QuestCardProps): JSX.Element {
             </svg>{VIEW_QUEST_LEVEL[level]}
           </li>
         </ul>
+        {typeComponent && <button className="btn btn--accent btn--secondary quest-card__btn" type="button">Отменить</button>}
       </div>
     </div>
   );

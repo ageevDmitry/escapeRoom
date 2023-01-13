@@ -124,3 +124,10 @@ export const VIEW_QUEST_LEVEL = {
   [QuestLevel.Medium]: 'средний',
   [QuestLevel.Hard]: 'сложный',
 } as const;
+
+export enum QuestCardType {
+  Main = 'main',
+  MyQuests = 'my-quests',
+}
+
+export const MyQuestCardType = true;

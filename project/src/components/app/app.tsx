@@ -34,7 +34,7 @@ function App(): JSX.Element {
         <Route
           path={AppRoute.Booking}
           element={
-            <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+            <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
               <Booking/>
             </PrivateRoute>
           }
@@ -42,7 +42,7 @@ function App(): JSX.Element {
         <Route
           path={AppRoute.MyQuests}
           element={
-            <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+            <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
               <MyQuests/>
             </PrivateRoute>
           }
