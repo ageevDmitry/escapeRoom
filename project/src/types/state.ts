@@ -1,6 +1,13 @@
+import {AuthorizationStatus} from '../const';
+import {UserData} from '../types/user-data';
 import {Quest} from './quest';
 import {QuestDetail} from './quest';
 import {store} from '../store';
+
+export type UserProcess = {
+    authorizationStatus: AuthorizationStatus;
+    userData: UserData | null;
+  };
 
 export type QuestsData = {
     quests: Quest[];

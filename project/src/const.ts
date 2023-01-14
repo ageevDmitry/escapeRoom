@@ -105,9 +105,12 @@ export enum AuthorizationStatus {
 
 export enum APIRoute {
   Quests = 'escape-room/quest',
+  Login = '/login',
+  Logout = '/logout',
 }
 
 export enum NameSpace {
+  UserProcess = 'USER-PROCESS',
   QuestsData = 'QUESTS-DATA',
   QuestsUI = 'QUESTS-UI',
   DataError = 'DATA-ERROR',
