@@ -5,7 +5,7 @@ import {loginAction} from '../../store/api-action';
 
 function FormLogin (): JSX.Element {
 
-  const {register, handleSubmit} = useForm();
+  const {register, handleSubmit, formState: { errors }} = useForm();
   const dispatch = useAppDispatch();
 
   const onSubmit = (evt) => {
@@ -25,7 +25,11 @@ function FormLogin (): JSX.Element {
           <div className="login-form__inputs">
             <div className="custom-input login-form__input">
               <label className="custom-input__label" htmlFor="email">E&nbsp;–&nbsp;mail</label>
-              <input type="email" id="email" placeholder="Адрес электронной почты" {...register('email', { required: true })}/>
+              <input type="email" id="email" placeholder="Адрес электронной почты"
+                {...register('email', { required: 'Укажите почту' })}
+                aria-invalid={errors.email ? 'true' : 'false'}
+              />
+              {errors.email && <><br/><span role="alert">{errors.email?.message}</span></>}
             </div>
             <div className="custom-input login-form__input">
               <label className="custom-input__label" htmlFor="password">Пароль</label>
