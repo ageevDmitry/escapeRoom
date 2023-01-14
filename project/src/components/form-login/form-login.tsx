@@ -1,4 +1,9 @@
+import {useAppDispatch} from '../../hooks';
+import {loginAction} from '../../store/api-action';
+
 function FormLogin (): JSX.Element {
+
+  const dispatch = useAppDispatch();
 
   return (
     <div className="login__form">
@@ -15,7 +20,16 @@ function FormLogin (): JSX.Element {
               <input type="password" id="password" name="password" placeholder="Пароль" required/>
             </div>
           </div>
-          <button className="btn btn--accent btn--general login-form__submit" type="submit">Войти</button>
+          <button className="btn btn--accent btn--general login-form__submit" type="submit"
+            onClick={() => {
+              dispatch(loginAction({
+                login: 'Oliver.conner@gmail.com',
+                password: 'password2',
+              }
+              ));
+            }}
+          >Войти
+          </button>
         </div>
         <label className="custom-checkbox login-form__checkbox">
           <input type="checkbox" id="id-order-agreement" name="user-agreement" required />

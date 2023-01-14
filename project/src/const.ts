@@ -105,8 +105,8 @@ export enum AuthorizationStatus {
 
 export enum APIRoute {
   Quests = 'escape-room/quest',
-  Login = '/login',
-  Logout = '/logout',
+  Login = 'escape-room/login',
+  Logout = 'escape-room/logout',
 }
 
 export enum NameSpace {
