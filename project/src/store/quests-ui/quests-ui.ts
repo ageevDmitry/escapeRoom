@@ -12,12 +12,12 @@ export const questsUI = createSlice({
   initialState,
   reducers: {
     changeFilterGenreType: (state, action) => {
-      // state.filterGenreType = action.payload.type;
-      state.filterGenreType = 'All';
+      state.filterGenreType = action.payload.type;
+      // state.filterGenreType = 'All';
     },
     changeFilterLevelType: (state, action) => {
-      // state.filterLevelType = action.payload.type;
-      state.filterLevelType = 'Any';
+      state.filterLevelType = action.payload.type;
+      // state.filterLevelType = 'Any';
     },
   }
 });
