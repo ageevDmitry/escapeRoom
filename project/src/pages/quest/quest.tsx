@@ -6,8 +6,8 @@ import Loading from '../../components/loading/loading';
 import {useAppSelector, useAppDispatch} from '../../hooks';
 import {fetchQuestDetailAction} from '../../store/api-action';
 import {getQuestDetail} from '../../store/quests-data/selectors';
-import {VIEW_QUEST_LEVEL} from '../../const';
-import {VIEW_QUEST_TYPE} from '../../const';
+import {VIEW_QUEST_LEVEL, VIEW_QUEST_TYPE, LENGTH_QUEST_DESCRIPTION} from '../../const';
+import {Link} from 'react-router-dom';
 
 function Quest (): JSX.Element {
 
@@ -56,8 +56,8 @@ function Quest (): JSX.Element {
                 </svg>{VIEW_QUEST_LEVEL[level]}
               </li>
             </ul>
-            <p className="quest-page__description">{description}</p>
-            <a className="btn btn--accent btn--cta quest-page__btn" href="booking.html">Забронировать</a>
+            <p className="quest-page__description">{(description.length > LENGTH_QUEST_DESCRIPTION) ? `${description.substring(0, LENGTH_QUEST_DESCRIPTION)}...` : `${description}`}</p>
+            <Link to = '/booking' className="btn btn--accent btn--cta quest-page__btn">Забронировать</Link>
           </div>
         </div>
       </main>

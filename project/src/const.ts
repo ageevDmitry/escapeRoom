@@ -152,3 +152,5 @@ export enum DEFAULT_FILTERS_TYPE {
   GenresType = 'all',
   DifficultyType = 'any'
 }
+
+export const LENGTH_QUEST_DESCRIPTION = 300;
