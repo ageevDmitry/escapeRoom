@@ -2,9 +2,12 @@ import {useEffect} from 'react';
 import {useParams} from 'react-router-dom';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
+import Loading from '../../components/loading/loading';
 import {useAppSelector, useAppDispatch} from '../../hooks';
 import {fetchQuestDetailAction} from '../../store/api-action';
 import {getQuestDetail} from '../../store/quests-data/selectors';
+import {VIEW_QUEST_LEVEL} from '../../const';
+import {VIEW_QUEST_TYPE} from '../../const';
 
 function Quest (): JSX.Element {
 
@@ -18,33 +21,42 @@ function Quest (): JSX.Element {
     }
   }, [id, questDetail?.id, dispatch]);
 
+  if (!questDetail) {
+    return (
+      <Loading/>
+    );
+  }
+
+  const {title, description, previewImg, previewImgWebp, coverImg, coverImgWebp, type, level, peopleMinMax} = questDetail;
+
   return (
     <div className="wrapper">
       <Header/>
       <main className="decorated-page quest-page">
         <div className="decorated-page__decor" aria-hidden="true">
           <picture>
-            <source type="image/webp" srcSet="img/content/maniac/maniac-size-m.webp, img/content/maniac/maniac-size-m@2x.webp 2x" /><img src="img/content/maniac/maniac-size-m.jpg" srcSet="img/content/maniac/maniac-size-m@2x.jpg 2x" alt="" width={1366} height={768} />
+            <source type="image/webp" srcSet={`${previewImgWebp}, ${coverImgWebp}`}/>
+            <img src={previewImg} srcSet={coverImg} alt="" width={1366} height={768} />
           </picture>
         </div>
         <div className="container container--size-l">
           <div className="quest-page__content">
-            <h1 className="title title--size-l title--uppercase quest-page__title">Маньяк</h1>
-            <p className="subtitle quest-page__subtitle"><span className="visually-hidden">Жанр:</span>Ужасы
+            <h1 className="title title--size-l title--uppercase quest-page__title">{title}</h1>
+            <p className="subtitle quest-page__subtitle"><span className="visually-hidden">Жанр:</span>{VIEW_QUEST_TYPE[type]}
             </p>
             <ul className="tags tags--size-l quest-page__tags">
               <li className="tags__item">
                 <svg width={11} height={14} aria-hidden="true">
                   <use xlinkHref="#icon-person" />
-                </svg>3–6&nbsp;чел
+                </svg>{peopleMinMax[0]}–{peopleMinMax[1]}&nbsp;чел
               </li>
               <li className="tags__item">
                 <svg width={14} height={14} aria-hidden="true">
                   <use xlinkHref="#icon-level" />
-                </svg>Средний
+                </svg>{VIEW_QUEST_LEVEL[level]}
               </li>
             </ul>
-            <p className="quest-page__description">В&nbsp;комнате с&nbsp;приглушённым светом несколько человек, незнакомых друг с&nbsp;другом, приходят в&nbsp;себя. Никто не&nbsp;помнит, что произошло прошлым вечером. Руки и&nbsp;ноги связаны, но&nbsp;одному из&nbsp;вас получилось освободиться. На&nbsp;стене висит пугающий таймер и&nbsp;запущен отсчёт 60&nbsp;минут. Сможете&nbsp;ли вы&nbsp;разобраться в&nbsp;стрессовой ситуации, помочь другим, разобраться что произошло и&nbsp;выбраться из&nbsp;комнаты?</p>
+            <p className="quest-page__description">{description}</p>
             <a className="btn btn--accent btn--cta quest-page__btn" href="booking.html">Забронировать</a>
           </div>
         </div>

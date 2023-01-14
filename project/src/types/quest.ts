@@ -1,4 +1,4 @@
-import {QuestLevel} from '../const';
+import {QuestLevel, QuestType} from '../const';
 
 export type Quest = {
         id: number;
@@ -19,6 +19,6 @@ export type QuestDetail = {
         coverImg: string;
         coverImgWebp: string;
         level: QuestLevel;
-        type: string;
+        type: QuestType;
         peopleMinMax: number[];
 }

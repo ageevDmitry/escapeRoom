@@ -119,10 +119,26 @@ export enum QuestLevel {
   Hard = 'hard',
 }
 
+export enum QuestType {
+  Adventures = 'adventures',
+  Horror = 'horror',
+  Detective = 'detective',
+  Mystic = 'mystic',
+  SciFi = 'sci-fi',
+}
+
 export const VIEW_QUEST_LEVEL = {
   [QuestLevel.Easy]: 'легкий',
   [QuestLevel.Medium]: 'средний',
   [QuestLevel.Hard]: 'сложный',
+} as const;
+
+export const VIEW_QUEST_TYPE = {
+  [QuestType.Adventures]: 'приключения',
+  [QuestType.Horror]: 'ужасы',
+  [QuestType.Detective]: 'детектив',
+  [QuestType.Mystic]: 'мистика',
+  [QuestType.SciFi]: 'sci-fi',
 } as const;
 
 export enum QuestCardType {
