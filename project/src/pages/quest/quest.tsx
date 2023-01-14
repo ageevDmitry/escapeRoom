@@ -6,14 +6,17 @@ import Loading from '../../components/loading/loading';
 import {useAppSelector, useAppDispatch} from '../../hooks';
 import {fetchQuestDetailAction} from '../../store/api-action';
 import {getQuestDetail} from '../../store/quests-data/selectors';
-import {VIEW_QUEST_LEVEL, VIEW_QUEST_TYPE, LENGTH_QUEST_DESCRIPTION} from '../../const';
-import {Link} from 'react-router-dom';
+import {getAuthorizationStatus} from '../../store/user-process/selectors';
+import {VIEW_QUEST_LEVEL, VIEW_QUEST_TYPE, LENGTH_QUEST_DESCRIPTION, AuthorizationStatus, AppRoute} from '../../const';
+// import {Link} from 'react-router-dom';
+import {redirectToRoute} from '../../store/action';
 
 function Quest (): JSX.Element {
 
   const {id} = useParams();
   const dispatch = useAppDispatch();
   const questDetail = useAppSelector(getQuestDetail);
+  const authorizationStatus = useAppSelector(getAuthorizationStatus);
 
   useEffect(() => {
     if (id) {
@@ -57,7 +60,15 @@ function Quest (): JSX.Element {
               </li>
             </ul>
             <p className="quest-page__description">{(description.length > LENGTH_QUEST_DESCRIPTION) ? `${description.substring(0, LENGTH_QUEST_DESCRIPTION)}...` : `${description}`}</p>
-            <Link to = '/booking' className="btn btn--accent btn--cta quest-page__btn">Забронировать</Link>
+            <button className="btn btn--accent btn--cta quest-page__btn"
+              onClick={() => {
+                if (authorizationStatus !== AuthorizationStatus.Auth) {
+                  return dispatch(redirectToRoute(AppRoute.Login));
+                }
+                dispatch(redirectToRoute(AppRoute.Booking));
+              }}
+            >Забронировать
+            </button>
           </div>
         </div>
       </main>
