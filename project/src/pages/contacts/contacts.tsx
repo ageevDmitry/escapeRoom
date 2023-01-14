@@ -2,11 +2,17 @@ import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 import Map from '../../components/map/map';
 import {CONTACTS} from '../../const';
+import {useLocation} from 'react-router-dom';
 
 function Contacts (): JSX.Element {
+
+  const location = useLocation();
+
   return (
     <div className="wrapper">
-      <Header/>
+      <Header
+        location = {location.pathname}
+      />
       <main className="page-content decorated-page">
         <div className="decorated-page__decor" aria-hidden="true">
           <picture>

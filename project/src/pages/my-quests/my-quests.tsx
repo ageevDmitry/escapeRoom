@@ -4,14 +4,18 @@ import QuestCard from '../../components/quest-card/quest-card';
 import {useAppSelector} from '../../hooks';
 import {getQuests} from '../../store/quests-data/selectors';
 import {IS_MY_QUESTS_CARD_TYPE} from '../../const';
+import {useLocation} from 'react-router-dom';
 
 function MyQuests (): JSX.Element {
 
   const quests = useAppSelector(getQuests);
+  const location = useLocation();
 
   return (
     <div className="wrapper">
-      <Header/>
+      <Header
+        location = {location.pathname}
+      />
       <main className="page-content decorated-page">
         <div className="decorated-page__decor" aria-hidden="true">
           <picture>

@@ -1,9 +1,19 @@
 import Logo from '../logo/logo';
 import SingIn from '../sing-in/sing-in';
+import SingOut from '../sing-out/sing-out';
 import {CONTACTS, NAV_PAGES} from '../../const';
-// import SingOut from '../sing-out/sing-out';
+import {Link} from 'react-router-dom';
+import {AuthorizationStatus} from '../../const';
+import {getAuthorizationStatus} from '../../store/user-process/selectors';
+import {useAppSelector} from '../../hooks';
 
-function Header (): JSX.Element {
+type HeaderProps = {
+  location?: string;
+}
+
+function Header ({location}: HeaderProps): JSX.Element {
+
+  const authorizationStatus = useAppSelector(getAuthorizationStatus);
 
   return (
     <header className="header">
@@ -13,13 +23,14 @@ function Header (): JSX.Element {
           <ul className="main-nav__list">
             {NAV_PAGES.map((item) => (
               <li key = {item.title} className="main-nav__item">
-                <a className="link" href={item.href}>{item.title}</a>
+                <Link to={item.href} className={`link ${item.href === location ? 'active' : ''}` }>{item.title}
+                </Link>
               </li>
             ))}
           </ul>
         </nav>
         <div className="header__side-nav">
-          <SingIn/>
+          {authorizationStatus === AuthorizationStatus.Auth ? <SingOut/> : <SingIn/>}
           <a className="link header__side-item header__phone-link" href={CONTACTS.phoneHref}>{CONTACTS.phone}</a>
         </div>
       </div>

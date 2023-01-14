@@ -1,7 +1,15 @@
+import {Link} from 'react-router-dom';
+import {AppRoute} from '../../const';
+
+
 function SingIn (): JSX.Element {
 
   return (
-    <a className="btn header__side-item header__login-btn" href="login.html">Вход</a>
+    <Link
+      to={AppRoute.Login}
+      className="btn header__side-item header__login-btn"
+    >Вход
+    </Link>
   );
 }
 

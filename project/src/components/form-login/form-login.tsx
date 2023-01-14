@@ -29,7 +29,7 @@ function FormLogin (): JSX.Element {
                 {...register('email', { required: 'Укажите почту' })}
                 aria-invalid={errors.email ? 'true' : 'false'}
               />
-              {errors.email && <><br/><span role="alert">{errors.email?.message}</span></>}
+              {/* {errors.email && <><br/><span role="alert">{errors.email?.message}</span></>} */}
             </div>
             <div className="custom-input login-form__input">
               <label className="custom-input__label" htmlFor="password">Пароль</label>

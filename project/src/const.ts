@@ -1,3 +1,13 @@
+export enum AppRoute {
+  Main = '/',
+  Quest = '/quest/:id',
+  Contacts = '/contacts',
+  Login = '/login',
+  Booking = '/booking',
+  MyQuests = '/my-quests',
+  NotFound = '/404',
+}
+
 export const CONTACTS = {
   address: 'Санкт-Петербург, Набережная реки Карповка, д 5П',
   mode: 'Ежедневно, c 10:00 до 22:00',
@@ -10,15 +20,15 @@ export const CONTACTS = {
 export const NAV_PAGES = [
   {
     title: 'Квесты',
-    href: 'index.html',
+    href: AppRoute.Main,
   },
   {
     title: 'Контакты',
-    href: 'contacts.html',
+    href: AppRoute.Contacts,
   },
   {
     title: 'Мои бронирования',
-    href: 'my-quests.html',
+    href: AppRoute.MyQuests,
   },
 ];
 
@@ -86,16 +96,6 @@ export const SOCIAL_LINKS = [
     href: 'https://vk.com/'
   },
 ];
-
-export enum AppRoute {
-  Main = '/',
-  Quest = '/quest/:id',
-  Contacts = '/contacts',
-  Login = '/login',
-  Booking = '/booking',
-  MyQuests = '/my-quests',
-  NotFound = '/404',
-}
 
 export enum AuthorizationStatus {
   Auth = 'AUTH',

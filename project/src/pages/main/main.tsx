@@ -7,14 +7,18 @@ import Footer from '../../components/footer/footer';
 // import ContentEmpty from '../../components/content-empty/content-empty';
 import {useAppSelector} from '../../hooks';
 import {getFilterQuests} from '../../store/quests-ui/selectors';
+import {useLocation} from 'react-router-dom';
 
 function Main (): JSX.Element {
 
   const quests = useAppSelector(getFilterQuests);
+  const location = useLocation();
 
   return (
     <div className="wrapper">
-      <Header/>
+      <Header
+        location = {location.pathname}
+      />
       <main className="page-content">
         <div className="container">
           <div className="page-content__title-wrapper">
