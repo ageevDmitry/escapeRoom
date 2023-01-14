@@ -1,7 +1,7 @@
 import Logo from '../logo/logo';
 import SingIn from '../sing-in/sing-in';
 import SingOut from '../sing-out/sing-out';
-import {CONTACTS, NAV_PAGES} from '../../const';
+import {CONTACTS, NAV_PAGES, MY_QUESTS} from '../../const';
 import {Link} from 'react-router-dom';
 import {AuthorizationStatus} from '../../const';
 import {getAuthorizationStatus} from '../../store/user-process/selectors';
@@ -21,12 +21,21 @@ function Header ({location}: HeaderProps): JSX.Element {
         <Logo/>
         <nav className="main-nav header__main-nav">
           <ul className="main-nav__list">
-            {NAV_PAGES.map((item) => (
-              <li key = {item.title} className="main-nav__item">
-                <Link to={item.href} className={`link ${item.href === location ? 'active' : ''}` }>{item.title}
-                </Link>
-              </li>
-            ))}
+            {NAV_PAGES.map((item) => {
+              if (authorizationStatus !== AuthorizationStatus.Auth && item.title === MY_QUESTS) {
+                return (
+                  ''
+                );
+              } else {
+                return (
+                  <li key = {item.title} className="main-nav__item">
+                    <Link to={item.href} className={`link ${item.href === location ? 'active' : ''}` }>{item.title}
+                    </Link>
+                  </li>
+                );
+              }
+            }
+            )}
           </ul>
         </nav>
         <div className="header__side-nav">

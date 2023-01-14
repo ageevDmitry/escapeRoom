@@ -157,3 +157,5 @@ export enum DEFAULT_FILTERS_TYPE {
 }
 
 export const LENGTH_QUEST_DESCRIPTION = 300;
+
+export const MY_QUESTS = 'Мои бронирования';
