@@ -22,7 +22,7 @@ function Quest (): JSX.Element {
     if (id) {
       dispatch(fetchQuestDetailAction(id));
     }
-  }, [id, questDetail?.id, dispatch]);
+  }, [id, dispatch]);
 
   useEffect(() => () => {
     dispatch(cleanUpQuestDetail());
@@ -42,7 +42,7 @@ function Quest (): JSX.Element {
       <main className="decorated-page quest-page">
         <div className="decorated-page__decor" aria-hidden="true">
           <picture>
-            <source type="image/webp" srcSet={`${previewImgWebp}, ${coverImgWebp}`}/>
+            <source type="image/webp" srcSet={`${coverImgWebp}, ${previewImgWebp}`}/>
             <img src={previewImg} srcSet={coverImg} alt="" width={1366} height={768} />
           </picture>
         </div>

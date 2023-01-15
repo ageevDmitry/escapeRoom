@@ -18,7 +18,8 @@ function QuestCard ({quest, typeComponent}:QuestCardProps): JSX.Element {
       <div className="quest-card">
         <div className="quest-card__img">
           <picture>
-            <source type="image/webp" srcSet={previewImgWebp}/><img src={previewImg} alt="/" width={344} height={232} />
+            <source type="image/webp" srcSet={previewImgWebp}/>
+            <img src={previewImg} alt="/" width={344} height={232} />
           </picture>
         </div>
         <div className="quest-card__content">
