@@ -1,8 +1,9 @@
 import {MapContainer, TileLayer, Marker} from 'react-leaflet';
 import './map.css';
 import L from 'leaflet';
+import {UrlMapMarket} from '../../const';
 
-L.Icon.Default.imagePath = 'https://unpkg.com/leaflet@1.5.0/dist/images/';
+L.Icon.Default.imagePath = UrlMapMarket.Default;
 
 function Map (): JSX.Element {
   return (
