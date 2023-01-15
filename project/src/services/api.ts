@@ -34,10 +34,9 @@ export const createAPI = (): AxiosInstance => {
 
   api.interceptors.response.use(
     (response) => response,
-    (error: AxiosError) => {
+    (error: AxiosError<{error:string}>) => {
       if (error.response && shouldDisplayError(error.response)) {
-        toast.warn(error.message);
-        // toast.warn(error.response.data.error);
+        toast.warn(error.response.data.error);
       }
 
       if (!window.navigator.onLine) {

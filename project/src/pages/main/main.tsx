@@ -3,8 +3,7 @@ import FilterGenres from '../../components/filter-genre/filter-genre';
 import FilterDifficultyLevels from '../../components/filter-level/filter-level';
 import QuestCard from '../../components/quest-card/quest-card';
 import Footer from '../../components/footer/footer';
-// import Loading from '../../components/loading/loading';
-// import ContentEmpty from '../../components/content-empty/content-empty';
+import ContentEmpty from '../../components/content-empty/content-empty';
 import {useAppSelector} from '../../hooks';
 import {getFilterQuests} from '../../store/quests-ui/selectors';
 import {useLocation} from 'react-router-dom';
@@ -34,14 +33,14 @@ function Main (): JSX.Element {
           </div>
           <h2 className="title visually-hidden">Выберите квест</h2>
           <div className="cards-grid">
-            {
+            {(quests.length === 0) ?
+              <ContentEmpty/> :
               quests
                 .map((quest) => (
                   <QuestCard
                     key = {quest.id}
                     quest = {quest}
-                  />))
-            }
+                  />))}
           </div>
         </div>
       </main>

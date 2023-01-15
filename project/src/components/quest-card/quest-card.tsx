@@ -22,7 +22,7 @@ function QuestCard ({quest, typeComponent}:QuestCardProps): JSX.Element {
           </picture>
         </div>
         <div className="quest-card__content">
-          <div className="quest-card__info-wrapper"><a className="quest-card__link" href="quest.html">{title}</a>
+          <div className="quest-card__info-wrapper">{title}
             {typeComponent && <span className="quest-card__info">[завтра,&nbsp;20:00. наб. реки Карповки&nbsp;5, лит&nbsp;П<br/>м. Петроградская]</span>}
           </div>
           <ul className="tags quest-card__tags">

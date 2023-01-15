@@ -1,5 +1,5 @@
 import {useEffect} from 'react';
-import {useParams} from 'react-router-dom';
+import {useParams, useNavigate} from 'react-router-dom';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 import Loading from '../../components/loading/loading';
@@ -9,7 +9,6 @@ import {getQuestDetail} from '../../store/quests-data/selectors';
 import {getAuthorizationStatus} from '../../store/user-process/selectors';
 import {VIEW_QUEST_LEVEL, VIEW_QUEST_TYPE, LENGTH_QUEST_DESCRIPTION, AuthorizationStatus, AppRoute} from '../../const';
 // import {Link} from 'react-router-dom';
-import {redirectToRoute} from '../../store/action';
 
 function Quest (): JSX.Element {
 
@@ -17,6 +16,7 @@ function Quest (): JSX.Element {
   const dispatch = useAppDispatch();
   const questDetail = useAppSelector(getQuestDetail);
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (id) {
@@ -63,9 +63,9 @@ function Quest (): JSX.Element {
             <button className="btn btn--accent btn--cta quest-page__btn"
               onClick={() => {
                 if (authorizationStatus !== AuthorizationStatus.Auth) {
-                  return dispatch(redirectToRoute(AppRoute.Login));
+                  return navigate(AppRoute.Login);
                 }
-                dispatch(redirectToRoute(AppRoute.Booking));
+                navigate(AppRoute.Booking);
               }}
             >Забронировать
             </button>

@@ -1,4 +1,4 @@
-import {NameSpace} from '../../const';
+import {NameSpace, DEFAULT_FILTERS_TYPE} from '../../const';
 import {State} from '../../types/state';
 import {createSelector} from '@reduxjs/toolkit';
 import {Quest} from '../../types/quest';
@@ -13,7 +13,7 @@ const getFilterGenreQuests = createSelector(
 
     let filteredQuests = quests.slice();
 
-    if (filterType !== 'all') {
+    if (filterType !== DEFAULT_FILTERS_TYPE.GenresType) {
       filteredQuests = quests.filter((item: Quest) => item.type === filterType).slice();
     }
 
@@ -27,7 +27,7 @@ export const getFilterQuests = createSelector(
 
     let filteredQuests = quests.slice();
 
-    if (filterType !== 'any') {
+    if (filterType !== DEFAULT_FILTERS_TYPE.DifficultyType) {
       filteredQuests = quests.filter((item: Quest) => item.level === filterType).slice();
     }
 

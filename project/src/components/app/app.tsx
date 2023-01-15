@@ -2,7 +2,7 @@ import HistoryRouter from '../../pages/history-route/history-route';
 import {Route, Routes, Navigate} from 'react-router-dom';
 import {AppRoute, AuthorizationStatus} from '../../const';
 import PrivateRoute from '../../pages/private-route/private-route';
-import browserHistory from '../../pages/browser-history';
+import browserHistory from '../../browser-history';
 import Main from '../../pages/main/main';
 import Quest from '../../pages/quest/quest';
 import Contacts from '../../pages/contacts/contacts';
