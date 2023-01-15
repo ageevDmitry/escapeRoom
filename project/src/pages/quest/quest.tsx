@@ -8,7 +8,7 @@ import {fetchQuestDetailAction} from '../../store/api-action';
 import {getQuestDetail} from '../../store/quests-data/selectors';
 import {getAuthorizationStatus} from '../../store/user-process/selectors';
 import {VIEW_QUEST_LEVEL, VIEW_QUEST_TYPE, LENGTH_QUEST_DESCRIPTION, AuthorizationStatus, AppRoute} from '../../const';
-// import {Link} from 'react-router-dom';
+import {cleanUpQuestDetail} from '../../store/quests-data/quests-data';
 
 function Quest (): JSX.Element {
 
@@ -23,6 +23,10 @@ function Quest (): JSX.Element {
       dispatch(fetchQuestDetailAction(id));
     }
   }, [id, questDetail?.id, dispatch]);
+
+  useEffect(() => () => {
+    dispatch(cleanUpQuestDetail());
+  }, [dispatch]);
 
   if (!questDetail) {
     return (

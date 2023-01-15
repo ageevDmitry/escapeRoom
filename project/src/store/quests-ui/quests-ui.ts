@@ -12,10 +12,10 @@ export const questsUI = createSlice({
   name: NameSpace.QuestsUI,
   initialState,
   reducers: {
-    changeFilterGenreType: (state, action: PayloadAction<{ type: string}>) => {
+    changeFilterGenreType: (state, action: PayloadAction<{type: string}>) => {
       state.filterGenreType = action.payload.type;
     },
-    changeFilterLevelType: (state, action: PayloadAction<{ type: string}>) => {
+    changeFilterLevelType: (state, action: PayloadAction<{type: string}>) => {
       state.filterLevelType = action.payload.type;
     },
   }

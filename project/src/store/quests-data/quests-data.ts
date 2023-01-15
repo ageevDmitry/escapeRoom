@@ -14,7 +14,11 @@ const initialState: QuestsData = {
 export const questsData = createSlice({
   name: NameSpace.QuestsData,
   initialState,
-  reducers: {},
+  reducers: {
+    cleanUpQuestDetail: (state) => {
+      state.questDetail = undefined;
+    }
+  },
   extraReducers(builder) {
     builder
       .addCase(fetchQuestsAction.fulfilled, (state, action) => {
@@ -28,3 +32,5 @@ export const questsData = createSlice({
       });
   }
 });
+
+export const {cleanUpQuestDetail} = questsData.actions;
