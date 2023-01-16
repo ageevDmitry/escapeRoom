@@ -14,7 +14,9 @@ export const CONTACTS = {
   phone: '8 (000) 111-11-11',
   phoneHref: 'tel:88003335599',
   mail: 'info@escape-room.ru',
-  mailHref: 'mailto:info@escape-room.ru'
+  mailHref: 'mailto:info@escape-room.ru',
+  lat: 59.968137,
+  lng: 30.316272,
 };
 
 export const NAV_PAGES = [
