@@ -37,7 +37,7 @@ export const fetchQuestBookingAction = createAsyncThunk<QuestBooking, string, {
     state: State;
     extra: AxiosInstance;
   }>(
-    'data/fetchQuestDetail',
+    'data/fetchQuestBooking',
     async (id, {extra: api}) => {
       const {data} = await api.get<QuestBooking>(`${APIRoute.Quests}/${id}/booking`);
       return data;
