@@ -4,11 +4,11 @@ import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 import Loading from '../../components/loading/loading';
 import {useAppSelector, useAppDispatch} from '../../hooks';
-import {fetchQuestDetailAction} from '../../store/api-action';
+import {fetchQuestDetailAction, sendQuestBookedAction} from '../../store/api-action';
 import {getQuestDetail} from '../../store/quests-data/selectors';
 import {getAuthorizationStatus} from '../../store/user-process/selectors';
 import {VIEW_QUEST_LEVEL, VIEW_QUEST_TYPE, LENGTH_QUEST_DESCRIPTION, AuthorizationStatus, AppRoute} from '../../const';
-import {cleanUpQuestDetail, sendQuestBookedAction} from '../../store/quests-data/quests-data';
+import {cleanUpQuestDetail} from '../../store/quests-data/quests-data';
 
 function Quest (): JSX.Element {
 
@@ -17,6 +17,18 @@ function Quest (): JSX.Element {
   const questDetail = useAppSelector(getQuestDetail);
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
   const navigate = useNavigate();
+
+  const booked = {
+    id: 1,
+    date: 'today',
+    time: '14:00',
+    contactPerson: 'Oliver',
+    phone: '899911122233',
+    withChildren: true,
+    peopleCount: 3,
+    locationId: 1,
+    questId: 1
+  };
 
   useEffect(() => {
     if (id) {
@@ -75,6 +87,7 @@ function Quest (): JSX.Element {
                   return navigate(AppRoute.Login);
                 }
                 navigate(questBookingId);
+                dispatch(sendQuestBookedAction(booked));
               }}
             >Забронировать
             </button>

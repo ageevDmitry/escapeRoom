@@ -44,14 +44,14 @@ export const fetchQuestBookingAction = createAsyncThunk<QuestBooking, string, {
     },
   );
 
-export const sendQuestBookedAction = createAsyncThunk<QuestBooked, string, {
+export const sendQuestBookedAction = createAsyncThunk<QuestBooked, QuestBooked, {
     dispatch: AppDispatch;
     state: State;
     extra: AxiosInstance;
   }>(
     'data/sendQuestBooked',
-    async (id, {extra: api}) => {
-      const {data} = await api.post<QuestBooked>(`${APIRoute.Quests}/${id}/booking`);
+    async (questBooked, {extra: api}) => {
+      const {data} = await api.post<QuestBooked>(`${APIRoute.Quests}/${questBooked.id}/booking`, questBooked);
       return data;
     },
   );
