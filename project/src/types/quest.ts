@@ -35,12 +35,12 @@ type Location = {
 }
 
 type SlotTime = {
-    today: TimeQuest;
-    tomorrow: TimeQuest;
+    today: TimeQuest[];
+    tomorrow: TimeQuest[];
 }
 
 export type QuestBooking = {
     id: number;
     location: Location[];
-    slots: SlotTime[];
+    slots: SlotTime;
 }

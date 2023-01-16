@@ -34,7 +34,6 @@ function Quest (): JSX.Element {
     );
   }
 
-  // const {id, title, description, previewImg, previewImgWebp, coverImg, coverImgWebp, type, level, peopleMinMax} = questDetail;
   const {title, description, previewImg, previewImgWebp, coverImg, coverImgWebp, type, level, peopleMinMax} = questDetail;
   let questBookingId: string;
 

@@ -5,7 +5,6 @@ import {Link} from 'react-router-dom';
 type QuestCardProps = {
   typeComponent?: boolean;
   quest: Quest;
-  // onMouseEnterPlaceCard?: (id: number) => void;
 }
 
 function QuestCard ({quest, typeComponent}:QuestCardProps): JSX.Element {

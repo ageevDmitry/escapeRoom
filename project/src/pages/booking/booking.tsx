@@ -12,15 +12,13 @@ function Booking (): JSX.Element {
 
   const {id} = useParams();
   const dispatch = useAppDispatch();
-  const questDetail = useAppSelector(getQuestBooking);
+  const questBooking = useAppSelector(getQuestBooking);
 
   useEffect(() => {
     if (id) {
       dispatch(fetchQuestBookingAction(id));
     }
   }, [id, dispatch]);
-
-  console.log(questDetail);
 
   return (
     <div className="wrapper">
@@ -43,7 +41,9 @@ function Booking (): JSX.Element {
               <p className="booking-map__address">Вы&nbsp;выбрали: наб. реки Карповки&nbsp;5, лит&nbsp;П, м. Петроградская</p>
             </div>
           </div>
-          <FormBooking/>
+          <FormBooking
+            questBooking = {questBooking}
+          />
         </div>
       </main>
       <Footer/>
