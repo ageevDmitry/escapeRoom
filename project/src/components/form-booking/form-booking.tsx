@@ -1,7 +1,8 @@
 import {QuestBooking} from '../../types/quest';
 import {useForm} from 'react-hook-form';
-// import {useAppDispatch} from '../../hooks';
+import {useAppDispatch, useAppSelector} from '../../hooks';
 // import {sendQuestBookedAction} from '../../store/api-action';
+import {getQuestDetail} from '../../store/quests-data/selectors';
 
 type FormBookingProps = {
   questBooking?: QuestBooking;
@@ -10,18 +11,23 @@ type FormBookingProps = {
 type Fields = {
   name: string;
   tel: string;
+  person: number;
 }
 
 function FormBooking ({questBooking}: FormBookingProps): JSX.Element {
 
   const {register, handleSubmit, formState: { errors }} = useForm<Fields>();
-  // const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
+  const questDetail = useAppSelector(getQuestDetail);
+
+  console.log(questDetail?.peopleMinMax);
 
   const onSubmit = (data: Fields) => {
 
     console.log({
       contactPerson: data.name,
       phone: data.tel,
+      peopleCount: data.person,
     });
     // dispatch(sendQuestBookedAction({
     //   id: 1,
@@ -35,6 +41,17 @@ function FormBooking ({questBooking}: FormBookingProps): JSX.Element {
     //   questId: 1
     // }
     // ));
+  };
+
+  const checkPersonValidate = (person: number) => {
+
+    if (questDetail) {
+      if (person > questDetail?.peopleMinMax[0] || person < questDetail?.peopleMinMax[1]) {
+        return true;
+      } else {
+        return false;
+      }
+    }
   };
 
   return (
@@ -82,7 +99,11 @@ function FormBooking ({questBooking}: FormBookingProps): JSX.Element {
         </div>
         <div className="custom-input booking-form__input">
           <label className="custom-input__label" htmlFor="person">Количество участников</label>
-          <input type="number" id="person" name="person" placeholder="Количество участников" required />
+          <input type="number" id="person" placeholder="Количество участников" required {...register('person', { required: true, validate: {checkPersonValidate}})}
+            aria-invalid={errors.person ? 'true' : 'false'}
+          />
+          {errors.person?.type === 'required' && <><br/><span role="alert">Количество желающих должно совпадать с описанием квеста</span></>}
+          {errors.person?.type === 'validate' && <><br/><span role="alert">Количество желающих должно совпадать с описанием квеста</span></>}
         </div>
         <label className="custom-checkbox booking-form__checkbox booking-form__checkbox--children">
           <input type="checkbox" id="children" name="children" defaultChecked />
