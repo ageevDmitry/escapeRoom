@@ -1,8 +1,11 @@
+import {useEffect} from 'react';
+import {useParams} from 'react-router-dom';
 import {QuestBooking} from '../../types/quest';
 import {useForm} from 'react-hook-form';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 // import {sendQuestBookedAction} from '../../store/api-action';
 import {getQuestDetail} from '../../store/quests-data/selectors';
+import {fetchQuestDetailAction, fetchQuestBookingAction} from '../../store/api-action';
 
 type FormBookingProps = {
   questBooking?: QuestBooking;
@@ -16,11 +19,18 @@ type Fields = {
 
 function FormBooking ({questBooking}: FormBookingProps): JSX.Element {
 
+  const {id} = useParams();
   const {register, handleSubmit, formState: { errors }} = useForm<Fields>();
+
   const dispatch = useAppDispatch();
   const questDetail = useAppSelector(getQuestDetail);
 
-  console.log(questDetail?.peopleMinMax);
+  useEffect(() => {
+    if (id) {
+      dispatch(fetchQuestDetailAction(id));
+      dispatch(fetchQuestBookingAction(id));
+    }
+  }, [id, dispatch]);
 
   const onSubmit = (data: Fields) => {
 
@@ -44,9 +54,8 @@ function FormBooking ({questBooking}: FormBookingProps): JSX.Element {
   };
 
   const checkPersonValidate = (person: number) => {
-
     if (questDetail) {
-      if (person > questDetail?.peopleMinMax[0] || person < questDetail?.peopleMinMax[1]) {
+      if (person > questDetail.peopleMinMax[0] && person < questDetail.peopleMinMax[1]) {
         return true;
       } else {
         return false;
@@ -99,10 +108,11 @@ function FormBooking ({questBooking}: FormBookingProps): JSX.Element {
         </div>
         <div className="custom-input booking-form__input">
           <label className="custom-input__label" htmlFor="person">Количество участников</label>
-          <input type="number" id="person" placeholder="Количество участников" required {...register('person', { required: true, validate: {checkPersonValidate}})}
-            aria-invalid={errors.person ? 'true' : 'false'}
+          <input type="number" id="person" placeholder="Количество участников" {...register('person', { required: true,
+            validate: { checkPersonValidate } })}
+          aria-invalid={errors.person ? 'true' : 'false'}
           />
-          {errors.person?.type === 'required' && <><br/><span role="alert">Количество желающих должно совпадать с описанием квеста</span></>}
+          {errors.person?.type === 'required' && <><br/><span role="alert">Введите количество желающих</span></>}
           {errors.person?.type === 'validate' && <><br/><span role="alert">Количество желающих должно совпадать с описанием квеста</span></>}
         </div>
         <label className="custom-checkbox booking-form__checkbox booking-form__checkbox--children">

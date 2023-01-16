@@ -6,6 +6,7 @@ import {fetchQuestsAction,
   fetchQuestBookingAction,
   sendQuestBookedAction
 } from '../api-action';
+import type {PayloadAction} from '@reduxjs/toolkit';
 
 const initialState: QuestsData = {
   quests: [],
@@ -19,7 +20,13 @@ export const questsData = createSlice({
   reducers: {
     cleanUpQuestDetail: (state) => {
       state.questDetail = undefined;
-    }
+    },
+    setQuestBookingMinMax: (state, action: PayloadAction<{type: number[]}>) => {
+      state.questBookingMinMax = action.payload.type;
+    },
+    cleanQuestBookingMinMax: (state) => {
+      state.questBookingMinMax = undefined;
+    },
   },
   extraReducers(builder) {
     builder
@@ -50,4 +57,4 @@ export const questsData = createSlice({
   }
 });
 
-export const {cleanUpQuestDetail} = questsData.actions;
+export const {cleanUpQuestDetail, setQuestBookingMinMax, cleanQuestBookingMinMax} = questsData.actions;

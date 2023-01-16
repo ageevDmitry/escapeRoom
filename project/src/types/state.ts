@@ -12,6 +12,7 @@ export type UserProcess = {
 export type QuestsData = {
     quests: Quest[];
     questDetail?: QuestDetail;
+    questBookingMinMax?: number[];
     questBooking?: QuestBooking;
     questBooked?: QuestBooked;
     isDataLoading: boolean;
