@@ -50,7 +50,7 @@ export type QuestBooked = {
     date: string;
     time: string;
     contactPerson: string;
-    phone: number;
+    phone: string;
     withChildren: boolean;
     peopleCount: number;
     locationId: number;
