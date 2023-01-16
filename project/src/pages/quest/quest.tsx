@@ -36,8 +36,11 @@ function Quest (): JSX.Element {
 
   // const {id, title, description, previewImg, previewImgWebp, coverImg, coverImgWebp, type, level, peopleMinMax} = questDetail;
   const {title, description, previewImg, previewImgWebp, coverImg, coverImgWebp, type, level, peopleMinMax} = questDetail;
+  let questBookingId: string;
 
-  // const questBookingId = `quest/${id}/booking`;
+  if (id) {
+    questBookingId = `/quest/${id}/booking`;
+  }
 
   return (
     <div className="wrapper">
@@ -72,8 +75,7 @@ function Quest (): JSX.Element {
                 if (authorizationStatus !== AuthorizationStatus.Auth) {
                   return navigate(AppRoute.Login);
                 }
-                // navigate(questBookingId);
-                navigate(AppRoute.Booking);
+                navigate(questBookingId);
               }}
             >Забронировать
             </button>

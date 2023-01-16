@@ -3,7 +3,7 @@ export enum AppRoute {
   Quest = '/quest/:id',
   Contacts = '/contacts',
   Login = '/login',
-  Booking = 'quest/:id/booking',
+  Booking = '/quest/:id/booking',
   MyQuests = '/my-quests',
   NotFound = '/404',
 }
