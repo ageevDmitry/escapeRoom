@@ -8,7 +8,7 @@ import {fetchQuestDetailAction} from '../../store/api-action';
 import {getQuestDetail} from '../../store/quests-data/selectors';
 import {getAuthorizationStatus} from '../../store/user-process/selectors';
 import {VIEW_QUEST_LEVEL, VIEW_QUEST_TYPE, LENGTH_QUEST_DESCRIPTION, AuthorizationStatus, AppRoute} from '../../const';
-import {cleanUpQuestDetail} from '../../store/quests-data/quests-data';
+import {cleanUpQuestDetail, sendQuestBookedAction} from '../../store/quests-data/quests-data';
 
 function Quest (): JSX.Element {
 

@@ -15,7 +15,7 @@ function FormBooking ({questBooking}: FormBookingProps): JSX.Element {
           <div className="booking-form__date-inner-wrapper">
             {questBooking?.slots.today.map((item) => (
               <label key = {item.time} className="custom-radio booking-form__date">
-                <input type="radio" id={item.time} name="date" disabled ={item.isAvailable}/><span className="custom-radio__label">{item.time}</span>
+                <input type="radio" id={item.time} name="date" disabled ={item.isAvailable} required/><span className="custom-radio__label">{item.time}</span>
               </label>
             ))}
           </div>
@@ -25,7 +25,7 @@ function FormBooking ({questBooking}: FormBookingProps): JSX.Element {
           <div className="booking-form__date-inner-wrapper">
             {questBooking?.slots.tomorrow.map((item) => (
               <label key = {item.time} className="custom-radio booking-form__date">
-                <input type="radio" id={item.time} name="date" disabled ={item.isAvailable}/><span className="custom-radio__label">{item.time}</span>
+                <input type="radio" id={item.time} name="date" disabled ={item.isAvailable} required/><span className="custom-radio__label">{item.time}</span>
               </label>
             ))}
           </div>

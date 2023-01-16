@@ -3,7 +3,8 @@ import {NameSpace} from '../../const';
 import {QuestsData} from '../../types/state';
 import {fetchQuestsAction,
   fetchQuestDetailAction,
-  fetchQuestBookingAction
+  fetchQuestBookingAction,
+  sendQuestBookedAction
 } from '../api-action';
 
 const initialState: QuestsData = {
@@ -33,6 +34,18 @@ export const questsData = createSlice({
       })
       .addCase(fetchQuestBookingAction.fulfilled, (state, action) => {
         state.questBooking = action.payload;
+      })
+      .addCase(sendQuestBookedAction.pending, (state) => {
+        state.isDataLoading = true;
+        state.isSuccess = false;
+      })
+      .addCase(sendQuestBookedAction.fulfilled, (state, action) => {
+        state.isDataLoading = false;
+        state.isSuccess = true;
+      })
+      .addCase(sendQuestBookedAction.rejected, (state) => {
+        state.isDataLoading = false;
+        state.isSuccess = false;
       });
   }
 });

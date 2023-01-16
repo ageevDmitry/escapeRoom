@@ -44,3 +44,15 @@ export type QuestBooking = {
     location: Location[];
     slots: SlotTime;
 }
+
+export type QuestBooked = {
+    id: number;
+    date: string;
+    time: string;
+    contactPerson: string;
+    phone: number;
+    withChildren: boolean;
+    peopleCount: number;
+    locationId: number;
+    questId: number;
+}
