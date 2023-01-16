@@ -3,6 +3,7 @@ import {NameSpace} from '../../const';
 import {QuestsData} from '../../types/state';
 import {fetchQuestsAction,
   fetchQuestDetailAction,
+  fetchQuestBookingAction
 } from '../api-action';
 
 const initialState: QuestsData = {
@@ -29,6 +30,9 @@ export const questsData = createSlice({
       })
       .addCase(fetchQuestDetailAction.fulfilled, (state, action) => {
         state.questDetail = action.payload;
+      })
+      .addCase(fetchQuestBookingAction.fulfilled, (state, action) => {
+        state.questBooking = action.payload;
       });
   }
 });

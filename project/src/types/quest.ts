@@ -22,3 +22,25 @@ export type QuestDetail = {
         type: QuestType;
         peopleMinMax: number[];
 }
+
+type TimeQuest = {
+    time: string;
+    isAvailable: boolean;
+}
+
+type Location = {
+    id: number;
+    address: string;
+    coords: number[];
+}
+
+type SlotTime = {
+    today: TimeQuest;
+    tomorrow: TimeQuest;
+}
+
+export type QuestBooking = {
+    id: number;
+    location: Location[];
+    slots: SlotTime[];
+}

@@ -2,8 +2,25 @@ import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 import Map from '../../components/map/map';
 import FormBooking from '../../components/form-booking/form-booking';
+import {useParams} from 'react-router-dom';
+import {useAppSelector, useAppDispatch} from '../../hooks';
+import {fetchQuestBookingAction} from '../../store/api-action';
+import {getQuestBooking} from '../../store/quests-data/selectors';
+import {useEffect} from 'react';
 
 function Booking (): JSX.Element {
+
+  const {id} = useParams();
+  const dispatch = useAppDispatch();
+  const questDetail = useAppSelector(getQuestBooking);
+
+  useEffect(() => {
+    if (id) {
+      dispatch(fetchQuestBookingAction(id));
+    }
+  }, [id, dispatch]);
+
+  console.log(questDetail);
 
   return (
     <div className="wrapper">
