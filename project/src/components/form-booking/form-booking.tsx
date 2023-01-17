@@ -15,6 +15,8 @@ type Fields = {
   name: string;
   tel: string;
   person: number;
+  children: boolean;
+  idOrderAgreement: boolean;
 }
 
 function FormBooking ({questBooking}: FormBookingProps): JSX.Element {
@@ -38,6 +40,7 @@ function FormBooking ({questBooking}: FormBookingProps): JSX.Element {
       contactPerson: data.name,
       phone: data.tel,
       peopleCount: data.person,
+      withChildren: data.children,
     });
     // dispatch(sendQuestBookedAction({
     //   id: 1,
@@ -116,7 +119,7 @@ function FormBooking ({questBooking}: FormBookingProps): JSX.Element {
           {errors.person?.type === 'validate' && <><br/><span role="alert">Количество желающих должно совпадать с описанием квеста</span></>}
         </div>
         <label className="custom-checkbox booking-form__checkbox booking-form__checkbox--children">
-          <input type="checkbox" id="children" name="children" defaultChecked />
+          <input type="checkbox" id="children" {...register('children')} />
           <span className="custom-checkbox__icon">
             <svg width={20} height={17} aria-hidden="true">
               <use xlinkHref="#icon-tick" />
@@ -126,7 +129,7 @@ function FormBooking ({questBooking}: FormBookingProps): JSX.Element {
       </fieldset>
       <button className="btn btn--accent btn--cta booking-form__submit" type="submit">Забронировать</button>
       <label className="custom-checkbox booking-form__checkbox booking-form__checkbox--agreement">
-        <input type="checkbox" id="id-order-agreement" name="user-agreement" required />
+        <input type="checkbox" id="idOrderAgreement" {...register('idOrderAgreement', { required: true })} />
         <span className="custom-checkbox__icon">
           <svg width={20} height={17} aria-hidden="true">
             <use xlinkHref="#icon-tick" />
