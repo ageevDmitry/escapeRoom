@@ -17,6 +17,7 @@ type Fields = {
   person: number;
   children: boolean;
   agreement: boolean;
+  time: string;
 }
 
 function FormBooking ({questBooking}: FormBookingProps): JSX.Element {
@@ -36,11 +37,15 @@ function FormBooking ({questBooking}: FormBookingProps): JSX.Element {
 
   const onSubmit = (data: Fields) => {
 
+    const slotTime = data.time.split(' ');
+
     console.log({
       contactPerson: data.name,
       phone: data.tel,
       peopleCount: data.person,
       withChildren: data.children,
+      date: slotTime[0],
+      time: slotTime[1],
     });
     // dispatch(sendQuestBookedAction({
     //   id: 1,
@@ -75,7 +80,7 @@ function FormBooking ({questBooking}: FormBookingProps): JSX.Element {
           <div className="booking-form__date-inner-wrapper">
             {questBooking?.slots.today.map((item) => (
               <label key = {item.time} className="custom-radio booking-form__date">
-                <input type="radio" id={item.time} disabled ={item.isAvailable}/><span className="custom-radio__label">{item.time}</span>
+                <input type="radio" id={item.time} disabled ={item.isAvailable} value={`today ${item.time}`} {...register('time', { required: true })}/><span className="custom-radio__label">{item.time}</span>
               </label>
             ))}
           </div>
@@ -85,7 +90,7 @@ function FormBooking ({questBooking}: FormBookingProps): JSX.Element {
           <div className="booking-form__date-inner-wrapper">
             {questBooking?.slots.tomorrow.map((item) => (
               <label key = {item.time} className="custom-radio booking-form__date">
-                <input type="radio" id={item.time} name="date" disabled ={item.isAvailable} required/><span className="custom-radio__label">{item.time}</span>
+                <input type="radio" id={item.time} disabled ={item.isAvailable} value={`tomorrow ${item.time}`} {...register('time', { required: true })}/><span className="custom-radio__label">{item.time}</span>
               </label>
             ))}
           </div>
