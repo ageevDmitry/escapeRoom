@@ -5,13 +5,14 @@ import FormBooking from '../../components/form-booking/form-booking';
 import {useParams} from 'react-router-dom';
 import {useAppSelector, useAppDispatch} from '../../hooks';
 import {fetchQuestBookingAction} from '../../store/api-action';
-import {getQuestBooking} from '../../store/quests-data/selectors';
+import {getQuestBooking, getQuestDetail} from '../../store/quests-data/selectors';
 import {useEffect} from 'react';
 
 function Booking (): JSX.Element {
 
   const {id} = useParams();
   const dispatch = useAppDispatch();
+  const questDetail = useAppSelector(getQuestDetail);
   const questBooking = useAppSelector(getQuestBooking);
 
   useEffect(() => {
@@ -33,7 +34,7 @@ function Booking (): JSX.Element {
           <div className="page-content__title-wrapper">
             <h1 className="subtitle subtitle--size-l page-content__subtitle">Бронирование квеста
             </h1>
-            <p className="title title--size-m title--uppercase page-content__title">Маньяк</p>
+            <p className="title title--size-m title--uppercase page-content__title">{questDetail?.title}</p>
           </div>
           <div className="page-content__item">
             <div className="booking-map">

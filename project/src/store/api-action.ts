@@ -70,6 +70,19 @@ export const fetchQuestsReservationAction = createAsyncThunk<QuestReservation[],
     },
   );
 
+export const deleteQuestBookingAction = createAsyncThunk<string, string, {
+    dispatch: AppDispatch;
+    state: State;
+    extra: AxiosInstance;
+  }>(
+    'data/deleteQuestReservation',
+    async (id, {dispatch, extra: api}) => {
+      const {data} = await api.delete<string>(`${APIRoute.Reservation}/${id}`);
+      dispatch(fetchQuestsReservationAction());
+      return data;
+    },
+  );
+
 export const checkAuthAction = createAsyncThunk<UserData, undefined, {
     dispatch: AppDispatch;
     state: State;
