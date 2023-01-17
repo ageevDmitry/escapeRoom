@@ -16,7 +16,7 @@ type Fields = {
   tel: string;
   person: number;
   children: boolean;
-  idOrderAgreement: boolean;
+  agreement: boolean;
 }
 
 function FormBooking ({questBooking}: FormBookingProps): JSX.Element {
@@ -129,7 +129,10 @@ function FormBooking ({questBooking}: FormBookingProps): JSX.Element {
       </fieldset>
       <button className="btn btn--accent btn--cta booking-form__submit" type="submit">Забронировать</button>
       <label className="custom-checkbox booking-form__checkbox booking-form__checkbox--agreement">
-        <input type="checkbox" id="idOrderAgreement" {...register('idOrderAgreement', { required: true })} />
+        <input type="checkbox" id="id-order-agreement" {...register('agreement', { required: true })}
+          aria-invalid={errors.agreement ? 'true' : 'false'}
+        />
+        {errors.agreement?.type === 'required' && <><br/><span role="alert">Ознакомтесь, пожалуйста, с правилами</span></>}
         <span className="custom-checkbox__icon">
           <svg width={20} height={17} aria-hidden="true">
             <use xlinkHref="#icon-tick" />
