@@ -5,7 +5,7 @@ import {useForm} from 'react-hook-form';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 // import {sendQuestBookedAction} from '../../store/api-action';
 import {getQuestDetail} from '../../store/quests-data/selectors';
-import {fetchQuestDetailAction, fetchQuestBookingAction} from '../../store/api-action';
+import {fetchQuestDetailAction, fetchQuestBookingAction, sendQuestBookedAction} from '../../store/api-action';
 
 type FormBookingProps = {
   questBooking?: QuestBooking;
@@ -39,26 +39,20 @@ function FormBooking ({questBooking}: FormBookingProps): JSX.Element {
 
     const slotTime = data.time.split(' ');
 
-    console.log({
-      contactPerson: data.name,
-      phone: data.tel,
-      peopleCount: data.person,
-      withChildren: data.children,
-      date: slotTime[0],
-      time: slotTime[1],
-    });
-    // dispatch(sendQuestBookedAction({
-    //   id: 1,
-    //   date: 'today',
-    //   time: '14:00',
-    //   contactPerson: 'Oliver',
-    //   phone: '899911122233',
-    //   withChildren: true,
-    //   peopleCount: 3,
-    //   locationId: 1,
-    //   questId: 1
-    // }
-    // ));
+    if (id) {
+      dispatch(sendQuestBookedAction({
+        id: Number(id),
+        date: slotTime[0],
+        time: slotTime[1],
+        contactPerson: data.name,
+        phone: data.tel,
+        withChildren: data.children,
+        peopleCount: 3,
+        locationId: 1,
+        questId: Number(id),
+      }
+      ));
+    }
   };
 
   const checkPersonValidate = (person: number) => {
