@@ -1,4 +1,4 @@
-import {QuestLevel, QuestType} from '../const';
+import {QuestLevel, QuestType, QuestDate} from '../const';
 
 export type Quest = {
         id: number;
@@ -56,3 +56,15 @@ export type QuestBooked = {
     locationId: number;
     questId: number;
 }
+
+export type QuestReservation = {
+        id: number;
+        date: QuestDate;
+        time: string;
+        contactPerson: string;
+        phone: string;
+        withChildren: boolean;
+        peopleCount: number;
+        location: Location;
+        quest: Quest;
+    }

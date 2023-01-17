@@ -4,9 +4,10 @@ import {QuestsData} from '../../types/state';
 import {fetchQuestsAction,
   fetchQuestDetailAction,
   fetchQuestBookingAction,
-  sendQuestBookedAction
+  sendQuestBookedAction,
+  fetchQuestsReservationAction
 } from '../api-action';
-import type {PayloadAction} from '@reduxjs/toolkit';
+// import type {PayloadAction} from '@reduxjs/toolkit';
 
 const initialState: QuestsData = {
   quests: [],
@@ -21,12 +22,12 @@ export const questsData = createSlice({
     cleanUpQuestDetail: (state) => {
       state.questDetail = undefined;
     },
-    setQuestBookingMinMax: (state, action: PayloadAction<{type: number[]}>) => {
-      state.questBookingMinMax = action.payload.type;
-    },
-    cleanQuestBookingMinMax: (state) => {
-      state.questBookingMinMax = undefined;
-    },
+    // setQuestBookingMinMax: (state, action: PayloadAction<{type: number[]}>) => {
+    //   state.questBookingMinMax = action.payload.type;
+    // },
+    // cleanQuestBookingMinMax: (state) => {
+    //   state.questBookingMinMax = undefined;
+    // },
   },
   extraReducers(builder) {
     builder
@@ -53,8 +54,14 @@ export const questsData = createSlice({
       .addCase(sendQuestBookedAction.rejected, (state) => {
         state.isDataLoading = false;
         state.isSuccess = false;
+      })
+      .addCase(fetchQuestsReservationAction.fulfilled, (state, action) => {
+        state.questsReservation = action.payload;
+      })
+      .addCase(fetchQuestsReservationAction.rejected, (state) => {
+        state.questsReservation = [];
       });
   }
 });
 
-export const {cleanUpQuestDetail, setQuestBookingMinMax, cleanQuestBookingMinMax} = questsData.actions;
+export const {cleanUpQuestDetail} = questsData.actions;

@@ -132,6 +132,11 @@ export enum QuestType {
   SciFi = 'sci-fi',
 }
 
+export enum QuestDate {
+  Today = 'today',
+  Tomorrow = 'tomorrow',
+}
+
 export const VIEW_QUEST_LEVEL = {
   [QuestLevel.Easy]: 'легкий',
   [QuestLevel.Medium]: 'средний',
@@ -144,6 +149,11 @@ export const VIEW_QUEST_TYPE = {
   [QuestType.Detective]: 'детектив',
   [QuestType.Mystic]: 'мистика',
   [QuestType.SciFi]: 'sci-fi',
+} as const;
+
+export const VIEW_QUEST_DATE = {
+  [QuestDate.Today]: 'сегодня',
+  [QuestDate.Tomorrow]: 'завтра',
 } as const;
 
 export enum QuestCardType {

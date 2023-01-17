@@ -3,7 +3,6 @@ import {useParams} from 'react-router-dom';
 import {QuestBooking} from '../../types/quest';
 import {useForm} from 'react-hook-form';
 import {useAppDispatch, useAppSelector} from '../../hooks';
-// import {sendQuestBookedAction} from '../../store/api-action';
 import {getQuestDetail} from '../../store/quests-data/selectors';
 import {fetchQuestDetailAction, fetchQuestBookingAction, sendQuestBookedAction} from '../../store/api-action';
 

@@ -1,7 +1,7 @@
 import {AuthorizationStatus} from '../const';
 import {UserData} from '../types/user-data';
 import {Quest} from './quest';
-import {QuestDetail, QuestBooking, QuestBooked} from './quest';
+import {QuestDetail, QuestBooking, QuestBooked, QuestReservation} from './quest';
 import {store} from '../store';
 
 export type UserProcess = {
@@ -12,9 +12,9 @@ export type UserProcess = {
 export type QuestsData = {
     quests: Quest[];
     questDetail?: QuestDetail;
-    questBookingMinMax?: number[];
     questBooking?: QuestBooking;
     questBooked?: QuestBooked;
+    questsReservation?: QuestReservation[];
     isDataLoading: boolean;
     isSuccess: boolean;
 };
