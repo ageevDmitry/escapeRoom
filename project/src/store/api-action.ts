@@ -53,6 +53,7 @@ export const sendQuestBookedAction = createAsyncThunk<QuestBooked, QuestBooked, 
     async (questBooked, {dispatch, extra: api}) => {
       const {data} = await api.post<QuestBooked>(`${APIRoute.Quests}/${questBooked.id}/booking`, questBooked);
       dispatch(redirectToRoute(AppRoute.MyQuests));
+      dispatch(fetchQuestsReservationAction());
       return data;
     },
   );
@@ -64,7 +65,7 @@ export const fetchQuestsReservationAction = createAsyncThunk<QuestReservation[],
   }>(
     'data/fetchQuestReservation',
     async (_arg, {extra: api}) => {
-      const {data} = await api.get<QuestReservation[]>(APIRoute.Quests);
+      const {data} = await api.get<QuestReservation[]>(APIRoute.Reservation);
       return data;
     },
   );
@@ -77,6 +78,7 @@ export const checkAuthAction = createAsyncThunk<UserData, undefined, {
     'user/checkAuthAction',
     async (_arg, {dispatch, extra: api}) => {
       const {data} = await api.get<UserData>(APIRoute.Login);
+      dispatch(fetchQuestsReservationAction());
       return data;
     },
   );
@@ -91,7 +93,7 @@ export const loginAction = createAsyncThunk<UserData, AuthData, {
       const {data} = await api.post<UserData>(APIRoute.Login, {email, password});
       saveToken(data.token);
       dispatch(redirectToRoute(AppRoute.Main));
-      dispatch(fetchQuestsAction());
+      dispatch(fetchQuestsReservationAction());
       return data;
     },
   );

@@ -1,14 +1,14 @@
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
-import QuestCard from '../../components/quest-card/quest-card';
+import QuestCardReservation from '../../components/quest-card-reservation/quest-card-reservation';
 import {useAppSelector} from '../../hooks';
-import {getQuests} from '../../store/quests-data/selectors';
-import {IS_MY_QUESTS_CARD_TYPE} from '../../const';
+import {getQuestsReservation} from '../../store/quests-data/selectors';
 import {useLocation} from 'react-router-dom';
+import ContentEmpty from '../../components/content-empty/content-empty';
 
 function MyQuests (): JSX.Element {
 
-  const quests = useAppSelector(getQuests);
+  const questReservation = useAppSelector(getQuestsReservation);
   const location = useLocation();
 
   return (
@@ -27,15 +27,14 @@ function MyQuests (): JSX.Element {
             <h1 className="title title--size-m page-content__title">Мои бронирования</h1>
           </div>
           <div className="cards-grid">
-            {
-              quests
+            {(questReservation?.length === 0) ?
+              <ContentEmpty/> :
+              questReservation
                 .map((quest) => (
-                  <QuestCard
+                  <QuestCardReservation
                     key = {quest.id}
                     quest = {quest}
-                    typeComponent = {IS_MY_QUESTS_CARD_TYPE}
-                  />))
-            }
+                  />))}
           </div>
         </div>
       </main>

@@ -14,7 +14,7 @@ export type QuestsData = {
     questDetail?: QuestDetail;
     questBooking?: QuestBooking;
     questBooked?: QuestBooked;
-    questsReservation?: QuestReservation[];
+    questsReservation: QuestReservation[];
     isDataLoading: boolean;
     isSuccess: boolean;
 };

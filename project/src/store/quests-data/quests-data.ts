@@ -11,6 +11,7 @@ import {fetchQuestsAction,
 
 const initialState: QuestsData = {
   quests: [],
+  questsReservation: [],
   isDataLoading: false,
   isSuccess: false,
 };
