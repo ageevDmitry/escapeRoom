@@ -47,7 +47,7 @@ function FormBooking ({questBooking}: FormBookingProps): JSX.Element {
         contactPerson: data.name,
         phone: data.tel,
         withChildren: data.children,
-        peopleCount: 3,
+        peopleCount: Number(data.person),
         locationId: 1,
         questId: Number(id),
       }
@@ -74,7 +74,7 @@ function FormBooking ({questBooking}: FormBookingProps): JSX.Element {
           <div className="booking-form__date-inner-wrapper">
             {questBooking?.slots.today.map((item) => (
               <label key = {item.time} className="custom-radio booking-form__date">
-                <input type="radio" id={item.time} disabled ={item.isAvailable} value={`today ${item.time}`} {...register('time', { required: true })}/><span className="custom-radio__label">{item.time}</span>
+                <input type="radio" id={item.time} disabled ={!item.isAvailable} value={`today ${item.time}`} {...register('time', { required: true })}/><span className="custom-radio__label">{item.time}</span>
               </label>
             ))}
           </div>
@@ -84,7 +84,7 @@ function FormBooking ({questBooking}: FormBookingProps): JSX.Element {
           <div className="booking-form__date-inner-wrapper">
             {questBooking?.slots.tomorrow.map((item) => (
               <label key = {item.time} className="custom-radio booking-form__date">
-                <input type="radio" id={item.time} disabled ={item.isAvailable} value={`tomorrow ${item.time}`} {...register('time', { required: true })}/><span className="custom-radio__label">{item.time}</span>
+                <input type="radio" id={item.time} disabled ={!item.isAvailable} value={`tomorrow ${item.time}`} {...register('time', { required: true })}/><span className="custom-radio__label">{item.time}</span>
               </label>
             ))}
           </div>
