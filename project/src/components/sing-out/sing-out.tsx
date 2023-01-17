@@ -10,8 +10,7 @@ function SingOut (): JSX.Element {
   return (
     <Link to={AppRoute.Main}
       className="btn btn--accent header__side-item"
-      onClick={(evt) => {
-        evt.preventDefault();
+      onClick={() => {
         dispatch(logoutAction());
       }}
     >Выйти
